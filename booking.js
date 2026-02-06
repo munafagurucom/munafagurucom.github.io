@@ -312,6 +312,7 @@ class BookingPage {
         if (payBtn) {
             const isValid = this.validateForm();
             payBtn.disabled = !isValid;
+            console.log('Pay button state updated:', !isValid ? 'disabled' : 'enabled');
         }
     }
 
