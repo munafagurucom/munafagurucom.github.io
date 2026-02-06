@@ -15,7 +15,7 @@ class BookingPage {
         this.loadOrderSummary();
         this.setupFormValidation();
         this.setDateLimits();
-        this.checkFormValidity(); // Initial check to ensure button is properly disabled
+        this.updatePayButtonState(); // Initial check to ensure button is properly disabled
     }
 
     setupEventListeners() {
@@ -43,11 +43,11 @@ class BookingPage {
             if (field) {
                 field.addEventListener('blur', () => {
                     this.validateField(fieldId);
-                    this.checkFormValidity(); // Check form validity after each field validation
+                    this.updatePayButtonState(); // Check form validity after each field validation
                 });
                 field.addEventListener('input', () => {
                     this.clearFieldError(fieldId);
-                    this.checkFormValidity(); // Check form validity on input as well
+                    this.updatePayButtonState(); // Check form validity on input as well
                 });
             }
         });
