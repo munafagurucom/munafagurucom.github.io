@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Pedi And Mani Home Salon</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><i class="fas fa-spa"></i> Pedi And Mani</h1>
+                    <p>Home Salon Services</p>
+                </div>
+                <div class="header-info">
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 7975133457</span>
+                    </div>
+                    <div class="women-owned-badge">
+                        <i class="fas fa-venus"></i>
+                        <span>Women Owned</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Page Title -->
+            <section class="page-title">
+                <h2>Complete Your Payment</h2>
+                <p>Choose your preferred payment method</p>
+            </section>
+
+            <!-- Payment Amount -->
+            <section class="payment-amount">
+                <div class="amount-display">
+                    <h3>Total Amount to Pay</h3>
+                    <div class="amount">₹<span id="paymentAmount">0</span></div>
+                </div>
+            </section>
+
+            <!-- Payment Options -->
+            <section class="payment-options">
+                <h3>Choose Payment Method</h3>
+                <div class="payment-buttons">
+                    <button class="payment-btn gpay-btn" id="gpayBtn">
+                        <div class="payment-icon">
+                            <i class="fab fa-google-pay"></i>
+                        </div>
+                        <div class="payment-text">
+                            <span class="payment-name">Google Pay</span>
+                            <span class="payment-desc">Pay with GPay</span>
+                        </div>
+                    </button>
+
+                    <button class="payment-btn phonepe-btn" id="phonepeBtn">
+                        <div class="payment-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="payment-text">
+                            <span class="payment-name">PhonePe</span>
+                            <span class="payment-desc">Pay with PhonePe</span>
+                        </div>
+                    </button>
+
+                    <button class="payment-btn paytm-btn" id="paytmBtn">
+                        <div class="payment-icon">
+                            <i class="fas fa-wallet"></i>
+                        </div>
+                        <div class="payment-text">
+                            <span class="payment-name">Paytm</span>
+                            <span class="payment-desc">Pay with Paytm</span>
+                        </div>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Payment Details -->
+            <section class="payment-details">
+                <h3>Payment Details</h3>
+                <div class="payment-info">
+                    <div class="info-row">
+                        <label>UPI ID:</label>
+                        <span>test@upi</span>
+                    </div>
+                    <div class="info-row">
+                        <label>Amount:</label>
+                        <span>₹<span id="upiAmount">0</span></span>
+                    </div>
+                    <div class="info-row">
+                        <label>Message:</label>
+                        <span class="message-preview" id="messagePreview">
+                            <!-- Payment message will be displayed here -->
+                        </span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Booking Summary -->
+            <section class="booking-summary">
+                <h3>Booking Summary</h3>
+                <div class="summary-content" id="bookingSummary">
+                    <!-- Booking summary will be dynamically loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="services.js"></script>
+    <script src="storage.js"></script>
+    <script src="cart.js"></script>
+    <script src="utils.js"></script>
+    <script src="payment.js"></script>
+</body>
+</html>

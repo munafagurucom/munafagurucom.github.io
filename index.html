@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedi And Mani Home Salon - Premium Beauty Services at Home</title>
+    <meta name="description" content="Women-owned home salon service booking platform. Premium beauty services including facials, waxing, threading, pedicure, manicure and more.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><i class="fas fa-spa"></i> Pedi And Mani</h1>
+                    <p>Home Salon Services</p>
+                </div>
+                <div class="header-info">
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 7975133457</span>
+                    </div>
+                    <div class="women-owned-badge">
+                        <i class="fas fa-venus"></i>
+                        <span>Women Owned</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h2>Premium Beauty Services at Your Doorstep</h2>
+                    <p>Experience salon-quality treatments in the comfort of your home</p>
+                </div>
+            </section>
+
+            <!-- Filter Tags -->
+            <section class="filter-section">
+                <div class="filter-tags" id="filterTags">
+                    <button class="tag-btn active" data-tag="all">All Services</button>
+                    <button class="tag-btn" data-tag="Combo">Combo</button>
+                    <button class="tag-btn" data-tag="Facial">Facial</button>
+                    <button class="tag-btn" data-tag="Threading">Threading</button>
+                    <button class="tag-btn" data-tag="Waxing">Waxing</button>
+                    <button class="tag-btn" data-tag="Cleanup">Cleanup</button>
+                    <button class="tag-btn" data-tag="Pedicure">Pedicure</button>
+                    <button class="tag-btn" data-tag="Manicure">Manicure</button>
+                    <button class="tag-btn" data-tag="Detan">Detan</button>
+                    <button class="tag-btn" data-tag="Hair Color">Hair Color</button>
+                    <button class="tag-btn" data-tag="Hair Bleach">Hair Bleach</button>
+                    <button class="tag-btn" data-tag="Massage">Massage</button>
+                    <button class="tag-btn" data-tag="Cut & File">Cut & File</button>
+                </div>
+            </section>
+
+            <!-- Services Grid -->
+            <section class="services-section">
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Services will be dynamically loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Floating Cart Summary -->
+    <div class="floating-cart" id="floatingCart">
+        <div class="cart-content">
+            <div class="cart-total">
+                <span>Total: ₹<span id="cartTotal">0</span></span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn" disabled>
+                <span class="btn-text">Proceed to Checkout</span>
+                <span class="btn-minimum">Minimum checkout for cart is Rs.999</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="services.js"></script>
+    <script src="storage.js"></script>
+    <script src="cart.js"></script>
+    <script src="utils.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
