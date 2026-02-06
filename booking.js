@@ -15,6 +15,7 @@ class BookingPage {
         this.loadOrderSummary();
         this.setupFormValidation();
         this.setDateLimits();
+        this.checkFormValidity(); // Initial check to ensure button is properly disabled
     }
 
     setupEventListeners() {
@@ -40,8 +41,14 @@ class BookingPage {
         requiredFields.forEach(fieldId => {
             const field = document.getElementById(fieldId);
             if (field) {
-                field.addEventListener('blur', () => this.validateField(fieldId));
-                field.addEventListener('input', () => this.clearFieldError(fieldId));
+                field.addEventListener('blur', () => {
+                    this.validateField(fieldId);
+                    this.checkFormValidity(); // Check form validity after each field validation
+                });
+                field.addEventListener('input', () => {
+                    this.clearFieldError(fieldId);
+                    this.checkFormValidity(); // Check form validity on input as well
+                });
             }
         });
 
@@ -165,7 +172,11 @@ class BookingPage {
             
             case 'bookingDate':
                 isValid = Utils.validateRequired(value) && Utils.isValidBookingDate(value);
-                errorMessage = isValid ? 'Please select a valid future date' : 'This field is required';
+                if (!Utils.validateRequired(value)) {
+                    errorMessage = 'This field is required';
+                } else if (!Utils.isValidBookingDate(value)) {
+                    errorMessage = 'Please select a valid future date (tomorrow to 30 days from now)';
+                }
                 break;
             
             case 'bookingTime':
@@ -261,11 +272,18 @@ class BookingPage {
         const requiredFields = ['firstName', 'lastName', 'houseNumber', 'lane', 'city', 'phone', 'bookingDate', 'bookingTime'];
         let isValid = true;
         
+        console.log('=== Form Validation Debug ===');
+        
         requiredFields.forEach(fieldId => {
-            if (!this.validateField(fieldId)) {
+            const fieldValid = this.validateField(fieldId);
+            console.log(`Field ${fieldId}: ${fieldValid ? '✓' : '✗'}`);
+            if (!fieldValid) {
                 isValid = false;
             }
         });
+        
+        console.log(`Overall form valid: ${isValid}`);
+        console.log('==============================');
         
         return isValid;
     }
