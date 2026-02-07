@@ -237,8 +237,17 @@ class PaymentPage {
             const amount = this.bookingData.totalAmount;
             const message = this.createPaymentMessage();
             
-            // Generate UPI URL
-            const upiUrl = Utils.generateUPIURL(this.UPI_ID, amount, message);
+            // Generate transaction reference ID using booking reference or timestamp
+            const transactionRef = this.bookingData.bookingReference || `ORDER${Date.now()}`;
+            
+            // Generate app-specific UPI URL
+            const upiUrl = Utils.generateUPIURL(
+                this.UPI_ID, 
+                amount, 
+                message, 
+                transactionRef,
+                paymentMethod
+            );
             
             // Store payment info for WhatsApp redirect
             this.storageManager.saveUserData({
@@ -246,10 +255,11 @@ class PaymentPage {
                 amount,
                 upiId: this.UPI_ID,
                 message,
+                transactionRef,
                 bookingData: this.bookingData
             });
 
-            // Open UPI payment app
+            // Open app-specific UPI payment
             window.location.href = upiUrl;
             
             // Set up WhatsApp redirect after payment

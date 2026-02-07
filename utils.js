@@ -175,10 +175,28 @@ class Utils {
         }
     }
 
-    // Generate UPI payment URL
-    static generateUPIURL(upiId, amount, message) {
+    // Generate UPI payment URL with app-specific support
+    static generateUPIURL(upiId, amount, message, transactionRef = null, paymentApp = null) {
         const encodedMessage = encodeURIComponent(message);
-        return `upi://pay?pa=${upiId}&pn=Pedi%20And%20Mani&am=${amount}&cu=INR&tn=${encodedMessage}`;
+        const merchantName = 'Pedi%20And%20Mani';
+        const currency = 'INR';
+        
+        // Generate transaction reference if not provided
+        const tr = transactionRef || `ORDER${Date.now()}`;
+        
+        // Base UPI parameters according to NPCI specification
+        const baseParams = `pa=${upiId}&pn=${merchantName}&am=${amount}&tr=${tr}&tn=${encodedMessage}&cu=${currency}`;
+        
+        // App-specific deep link prefixes
+        const appPrefixes = {
+            'gpay': 'tez://upi/pay',
+            'phonepe': 'phonepe://pay',
+            'paytm': 'paytmmp://pay',
+            'default': 'upi://pay'
+        };
+        
+        const prefix = appPrefixes[paymentApp] || appPrefixes['default'];
+        return `${prefix}?${baseParams}`;
     }
 
     // Generate WhatsApp URL
