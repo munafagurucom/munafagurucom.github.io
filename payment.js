@@ -194,22 +194,22 @@ class PaymentPage {
         
         // Service IDs and details
         cartItems.forEach((item, index) => {
-            message += `${item.serviceId}X${item.quantity}-`;
+            message += `-${item.serviceId}X${item.quantity}-`;
         });
         
         // Customer details
         if (userData) {
-            message += `&${userData.firstName}&${userData.lastName}`;
-            message += `&${userData.phone}`;
+            message += `Q${userData.firstName}Q${userData.lastName}`;
+            message += `Q${userData.phone}`;
             
             if (userData.address.coordinates) {
-                message += `&${userData.address.coordinates.latitude.toFixed(6)},${userData.address.coordinates.longitude.toFixed(6)}`;
+                message += `Q${userData.address.coordinates.latitude.toFixed(6)},${userData.address.coordinates.longitude.toFixed(6)}`;
             }
             
         }
         
         if (this.bookingData.bookingReference) {
-            message += `&${this.bookingData.bookingReference}`;
+            message += `Q${this.bookingData.bookingReference}`;
         }
         
         return message;
