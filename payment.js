@@ -3,7 +3,7 @@
 class PaymentPage {
     constructor() {
         this.storageManager = storageManager;
-        this.UPI_ID = 'test@upi';
+        this.UPI_ID = 'tarajhs70@okicici';
         this.WHATSAPP_NUMBER = '+917975133457';
         this.init();
     }
