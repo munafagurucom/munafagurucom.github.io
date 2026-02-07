@@ -190,36 +190,27 @@ class PaymentPage {
         const userData = this.bookingData.userData;
         const cartItems = this.bookingData.cartItems;
         
-        let message = '🌸 Pedi And Mani Home Salon - Payment 🌸\n\n';
+        let message = '';
         
         // Service IDs and details
-        message += '📋 Services:\n';
         cartItems.forEach((item, index) => {
-            message += `${index + 1}. ${item.name} (ID: ${item.serviceId}) - Qty: ${item.quantity} - ₹${Utils.formatPrice(item.price * item.quantity)}\n`;
+            message += `${item.serviceId}X${item.quantity}-`;
         });
-        
-        message += `\n💰 Total Amount: ₹${Utils.formatPrice(this.bookingData.totalAmount)}\n\n`;
         
         // Customer details
         if (userData) {
-            message += '👤 Customer Details:\n';
-            message += `Name: ${userData.firstName} ${userData.lastName}\n`;
-            message += `Phone: ${userData.phone}\n`;
-            message += `Address: ${userData.address.houseNumber}, ${userData.address.lane}, ${userData.address.city}\n`;
+            message += `&${userData.firstName}&${userData.lastName}`;
+            message += `&${userData.phone}`;
             
             if (userData.address.coordinates) {
-                message += `GPS: ${userData.address.coordinates.latitude.toFixed(6)}, ${userData.address.coordinates.longitude.toFixed(6)}\n`;
+                message += `&${userData.address.coordinates.latitude.toFixed(6)},${userData.address.coordinates.longitude.toFixed(6)}`;
             }
             
-            message += `Date: ${Utils.formatDate(userData.bookingDate)}\n`;
-            message += `Time: ${Utils.formatTime(userData.bookingTime)}\n`;
         }
         
         if (this.bookingData.bookingReference) {
-            message += `\n📝 Booking Reference: ${this.bookingData.bookingReference}\n`;
+            message += `&${this.bookingData.bookingReference}`;
         }
-        
-        message += '\nThank you for choosing Pedi And Mani! 💖';
         
         return message;
     }
