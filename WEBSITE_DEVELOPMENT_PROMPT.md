@@ -82,7 +82,7 @@ Three payment options:
 3. Paytm button
 
 **Payment Integration**:
-- UPI ID: `test@upi`
+- UPI ID: `tarajhs70@okicici`
 - Auto-populate payment amount
 - Auto-populate message with: service IDs, phone number, GPS coordinates
 

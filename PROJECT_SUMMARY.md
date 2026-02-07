@@ -206,7 +206,7 @@ webui/
 - **Name**: Pedi And Mani Home Salon
 - **Phone**: +91 7975133457
 - **WhatsApp**: +91 7975133457
-- **UPI ID**: test@upi
+- **UPI ID**: tarajhs70@okicici
 
 ## 🎉 Project Success
 
