@@ -36,17 +36,6 @@
         font-size: 2.5rem;
     }
     
-    .home-icon {
-        width: 45px;
-        height: 45px;
-        top: 15px;
-        right: 15px;
-    }
-    
-    .home-link {
-        font-size: 18px;
-    }
-    
     .container {
         max-width: 720px;
         padding: 0 15px;
@@ -115,17 +104,6 @@
     .women-owned-badge {
         padding: 6px 12px;
         font-size: 0.85rem;
-    }
-    
-    .home-icon {
-        width: 40px;
-        height: 40px;
-        top: 10px;
-        right: 10px;
-    }
-    
-    .home-link {
-        font-size: 16px;
     }
     
     .hero {
@@ -249,17 +227,6 @@
     .women-owned-badge {
         padding: 5px 10px;
         font-size: 0.8rem;
-    }
-    
-    .home-icon {
-        width: 35px;
-        height: 35px;
-        top: 8px;
-        right: 8px;
-    }
-    
-    .home-link {
-        font-size: 14px;
     }
     
     .contact-info i,

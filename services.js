@@ -3,7 +3,7 @@
 
 const services = [
     {
-        serviceId: "combo_premium",
+        serviceId: "1",
         name: "Premium Combo Package",
         offerPrice: 2999,
         actualPrice: 3999,
@@ -13,7 +13,7 @@ const services = [
         description: "Complete beauty package with facial, pedicure, and manicure"
     },
     {
-        serviceId: "combo_basic",
+        serviceId: "2",
         name: "Basic Combo Package",
         offerPrice: 1499,
         actualPrice: 1999,
@@ -23,7 +23,7 @@ const services = [
         description: "Essential beauty package with facial and cleanup"
     },
     {
-        serviceId: "facial_gold",
+        serviceId: "3",
         name: "Gold Facial Treatment",
         offerPrice: 1299,
         actualPrice: 1799,
@@ -33,7 +33,7 @@ const services = [
         description: "Luxurious gold facial for glowing skin"
     },
     {
-        serviceId: "facial_diamond",
+        serviceId: "4",
         name: "Diamond Facial Treatment",
         offerPrice: 1599,
         actualPrice: 2299,
@@ -43,7 +43,7 @@ const services = [
         description: "Premium diamond facial for radiant skin"
     },
     {
-        serviceId: "facial_fruit",
+        serviceId: "5",
         name: "Fruit Facial",
         offerPrice: 899,
         actualPrice: 1299,
@@ -53,7 +53,7 @@ const services = [
         description: "Refreshing fruit facial with natural extracts"
     },
     {
-        serviceId: "threading_basic",
+        serviceId: "6",
         name: "Basic Threading",
         offerPrice: 299,
         actualPrice: 399,
@@ -63,7 +63,7 @@ const services = [
         description: "Eyebrow and upper lip threading"
     },
     {
-        serviceId: "threading_full",
+        serviceId: "7",
         name: "Full Face Threading",
         offerPrice: 599,
         actualPrice: 799,
@@ -73,7 +73,7 @@ const services = [
         description: "Complete face threading including chin and sides"
     },
     {
-        serviceId: "waxing_full_body",
+        serviceId: "8",
         name: "Full Body Waxing",
         offerPrice: 2499,
         actualPrice: 3499,
@@ -83,7 +83,7 @@ const services = [
         description: "Complete body waxing package"
     },
     {
-        serviceId: "waxing_half_body",
+        serviceId: "9",
         name: "Half Body Waxing",
         offerPrice: 1499,
         actualPrice: 1999,
@@ -93,7 +93,7 @@ const services = [
         description: "Half body waxing (arms and legs)"
     },
     {
-        serviceId: "waxing_bikini",
+        serviceId: "10",
         name: "Bikini Waxing",
         offerPrice: 899,
         actualPrice: 1299,
@@ -103,7 +103,7 @@ const services = [
         description: "Bikini line waxing"
     },
     {
-        serviceId: "cleanup_normal",
+        serviceId: "11",
         name: "Normal Cleanup",
         offerPrice: 699,
         actualPrice: 999,
@@ -113,7 +113,7 @@ const services = [
         description: "Basic face cleanup and toning"
     },
     {
-        serviceId: "cleanup_advanced",
+        serviceId: "12",
         name: "Advanced Cleanup",
         offerPrice: 999,
         actualPrice: 1499,
@@ -123,7 +123,7 @@ const services = [
         description: "Deep cleansing with exfoliation"
     },
     {
-        serviceId: "pedicure_sp",
+        serviceId: "13",
         name: "SP Pedicure",
         offerPrice: 899,
         actualPrice: 1299,
@@ -133,7 +133,7 @@ const services = [
         description: "Standard pedicure with foot massage"
     },
     {
-        serviceId: "pedicure_premium",
+        serviceId: "14",
         name: "Premium Pedicure",
         offerPrice: 1299,
         actualPrice: 1799,
@@ -143,7 +143,7 @@ const services = [
         description: "Luxury pedicure with spa treatment"
     },
     {
-        serviceId: "manicure_sp",
+        serviceId: "15",
         name: "SP Manicure",
         offerPrice: 799,
         actualPrice: 1099,
@@ -153,7 +153,7 @@ const services = [
         description: "Standard manicure with hand massage"
     },
     {
-        serviceId: "manicure_premium",
+        serviceId: "16",
         name: "Premium Manicure",
         offerPrice: 1199,
         actualPrice: 1699,
@@ -163,7 +163,7 @@ const services = [
         description: "Luxury manicure with nail art options"
     },
     {
-        serviceId: "detan_face",
+        serviceId: "17",
         name: "Face Detan",
         offerPrice: 799,
         actualPrice: 1099,
@@ -173,7 +173,7 @@ const services = [
         description: "Face detan treatment for sun damage"
     },
     {
-        serviceId: "detan_body",
+        serviceId: "18",
         name: "Body Detan",
         offerPrice: 1499,
         actualPrice: 1999,
@@ -183,7 +183,7 @@ const services = [
         description: "Full body detan treatment"
     },
     {
-        serviceId: "hair_color_global",
+        serviceId: "19",
         name: "Global Hair Color",
         offerPrice: 1999,
         actualPrice: 2999,
@@ -193,7 +193,7 @@ const services = [
         description: "Complete hair coloring service"
     },
     {
-        serviceId: "hair_color_highlights",
+        serviceId: "20",
         name: "Hair Highlights",
         offerPrice: 2499,
         actualPrice: 3499,
@@ -203,7 +203,7 @@ const services = [
         description: "Professional hair highlights"
     },
     {
-        serviceId: "hair_bleach_full",
+        serviceId: "21",
         name: "Full Hair Bleach",
         offerPrice: 1799,
         actualPrice: 2499,
@@ -213,7 +213,7 @@ const services = [
         description: "Complete hair bleaching service"
     },
     {
-        serviceId: "hair_bleach_streaks",
+        serviceId: "22",
         name: "Hair Bleach Streaks",
         offerPrice: 1299,
         actualPrice: 1799,
@@ -223,7 +223,7 @@ const services = [
         description: "Bleach streaks for stylish look"
     },
     {
-        serviceId: "massage_head",
+        serviceId: "23",
         name: "Head Massage",
         offerPrice: 599,
         actualPrice: 899,
@@ -233,7 +233,7 @@ const services = [
         description: "Relaxing head massage with oil"
     },
     {
-        serviceId: "massage_neck_shoulder",
+        serviceId: "24",
         name: "Neck & Shoulder Massage",
         offerPrice: 799,
         actualPrice: 1099,
@@ -243,7 +243,7 @@ const services = [
         description: "Stress-relieving neck and shoulder massage"
     },
     {
-        serviceId: "massage_full_body",
+        serviceId: "25",
         name: "Full Body Massage",
         offerPrice: 1999,
         actualPrice: 2999,
@@ -253,7 +253,7 @@ const services = [
         description: "Complete body relaxation massage"
     },
     {
-        serviceId: "cut_file_basic",
+        serviceId: "26",
         name: "Basic Cut & File",
         offerPrice: 399,
         actualPrice: 599,
@@ -263,7 +263,7 @@ const services = [
         description: "Basic nail cutting and filing"
     },
     {
-        serviceId: "cut_file_premium",
+        serviceId: "27",
         name: "Premium Cut & File",
         offerPrice: 699,
         actualPrice: 999,
