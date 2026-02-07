@@ -465,24 +465,10 @@
 }
 
 /* Dark Mode Support (Future Enhancement) */
-@media (prefers-color-scheme: dark) {
-    /* This can be enhanced when dark mode is implemented */
-    body {
-        background-color: #1a1a1a;
-        color: #f0f0f0;
-    }
-    
-    .service-card,
-    .form-section,
-    .floating-cart {
-        background: #2d2d2d;
-        color: #f0f0f0;
-    }
-    
-    .header {
-        background: linear-gradient(135deg, #8b1538, #a02463);
-    }
-}
+/* @media (prefers-color-scheme: dark) {
+    This is disabled to maintain consistent light pink theme across all devices
+    Uncomment and customize when implementing proper dark mode toggle
+*/
 
 /* Print Styles */
 @media print {

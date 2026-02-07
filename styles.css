@@ -67,11 +67,22 @@ body {
     text-decoration: none;
     display: block;
     transition: var(--transition);
+    cursor: default;
 }
 
 .logo-link:hover {
     color: white;
-    transform: translateY(-2px);
+    transform: none;
+}
+
+.logo-link h1 {
+    color: white;
+    text-decoration: none;
+}
+
+.logo-link h1:hover {
+    color: white;
+    text-decoration: none;
 }
 
 .logo h1 {
