@@ -114,6 +114,20 @@ body {
     font-size: 0.9rem;
 }
 
+.contact-link {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+}
+
+.contact-link:hover {
+    color: white;
+    transform: translateY(-2px);
+}
+
 /* Main Content */
 .main-content {
     padding: 40px 0;
