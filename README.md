@@ -87,7 +87,7 @@ const services = [
 Update payment details in `payment.js`:
 
 ```javascript
-this.UPI_ID = 'tarajhs70@okicici'; // Your UPI ID
+this.UPI_ID = 'test70@okicici'; // Your UPI ID
 this.WHATSAPP_NUMBER = '+917975133457'; // Your WhatsApp number
 ```
 
