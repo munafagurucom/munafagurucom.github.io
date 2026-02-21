@@ -16,6 +16,7 @@ class BookingPage {
         this.setupFormValidation();
         this.setDateLimits();
         this.updatePayButtonState(); // Initial check to ensure button is properly disabled
+        this.setupModalEvents();
     }
 
     setupEventListeners() {
@@ -354,13 +355,19 @@ class BookingPage {
             const success = this.storageManager.saveBookingData(completeBookingData);
             
             if (success) {
-                Utils.hideLoading();
-                Utils.showToast('Booking details saved successfully', 'success');
+                // Send booking details to Telegram
+                const telegramResult = await telegramService.sendBookingDetails(completeBookingData);
                 
-                // Redirect to payment page
-                setTimeout(() => {
-                    window.location.href = 'payment.html';
-                }, 1000);
+                Utils.hideLoading();
+                
+                if (telegramResult.success) {
+                    Utils.showToast('Booking details sent successfully', 'success');
+                    this.showSuccessModal(completeBookingData.bookingReference);
+                } else {
+                    // Still show success modal even if Telegram fails
+                    Utils.showToast('Booking received, but notification failed', 'warning');
+                    this.showSuccessModal(completeBookingData.bookingReference);
+                }
             } else {
                 Utils.showToast('Error saving booking details', 'error');
                 Utils.hideLoading();
@@ -370,6 +377,53 @@ class BookingPage {
             console.error('Error submitting form:', error);
             Utils.showToast('Error submitting booking form', 'error');
             Utils.hideLoading();
+        }
+    }
+
+    setupModalEvents() {
+        // Modal OK button event
+        const modalOkBtn = document.getElementById('modalOkBtn');
+        if (modalOkBtn) {
+            modalOkBtn.addEventListener('click', () => {
+                this.hideSuccessModal();
+                // Redirect to home page
+                window.location.href = 'index.html';
+            });
+        }
+
+        // Close modal when clicking overlay
+        const modalOverlay = document.getElementById('successModal');
+        if (modalOverlay) {
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target === modalOverlay) {
+                    this.hideSuccessModal();
+                    window.location.href = 'index.html';
+                }
+            });
+        }
+    }
+
+    showSuccessModal(bookingReference) {
+        const modal = document.getElementById('successModal');
+        const referenceElement = document.getElementById('modalBookingReference');
+        
+        if (modal) {
+            // Set booking reference
+            if (referenceElement) {
+                referenceElement.textContent = `Booking Reference: ${bookingReference}`;
+            }
+            
+            // Show modal
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+    }
+
+    hideSuccessModal() {
+        const modal = document.getElementById('successModal');
+        if (modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restore scrolling
         }
     }
 }
@@ -550,6 +604,122 @@ const bookingStyles = `
             border-color: var(--danger-color);
         }
         
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 0;
+            max-width: 400px;
+            width: 90%;
+            max-height: 90vh;
+            overflow: auto;
+            animation: slideUp 0.3s ease-out;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .modal-header {
+            text-align: center;
+            padding: 30px 20px 20px;
+            background: linear-gradient(135deg, var(--success-color), #28a745);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+        
+        .success-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            animation: bounceIn 0.6s ease-out;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .modal-body {
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .modal-body p {
+            margin: 0 0 15px;
+            color: var(--dark-color);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .booking-reference {
+            background: var(--light-color);
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 20px 0 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .modal-footer {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--light-color);
+        }
+        
+        .modal-footer .btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: var(--transition);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
         @media (max-width: 768px) {
             .summary-item {
                 flex-direction: column;
@@ -574,6 +744,46 @@ const bookingStyles = `
             
             .total-amount {
                 font-size: 1.2rem;
+            }
+            
+            /* Modal responsive styles */
+            .modal-content {
+                width: 95%;
+                margin: 20px;
+            }
+            
+            .modal-header {
+                padding: 25px 15px 15px;
+            }
+            
+            .success-icon {
+                font-size: 2.5rem;
+            }
+            
+            .modal-header h3 {
+                font-size: 1.3rem;
+            }
+            
+            .modal-body {
+                padding: 20px 15px;
+            }
+            
+            .modal-body p {
+                font-size: 0.95rem;
+            }
+            
+            .booking-reference {
+                font-size: 0.9rem;
+                padding: 10px 12px;
+            }
+            
+            .modal-footer {
+                padding: 15px;
+            }
+            
+            .modal-footer .btn {
+                padding: 10px 25px;
+                font-size: 0.95rem;
             }
         }
     </style>

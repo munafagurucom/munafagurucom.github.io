@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Token Test - Pedi And Mani</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; }
+        .result { background: #f0f8ff; padding: 10px; margin: 10px 0; }
+        .error { background: #ffe6e6; color: #cc0000; }
+        .success { background: #e6ffe6; color: #006600; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>🔐 Token System Test</h1>
+    
+    <div class="test-section">
+        <h2>Hashed Tokens in Config:</h2>
+        <div id="hashedTokens"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Token Reversal Test:</h2>
+        <button onclick="testTokenReversal()">Test Token Reversal</button>
+        <div id="reversalResult"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>Telegram API Test:</h2>
+        <button onclick="testTelegramAPI()">Test Telegram API</button>
+        <div id="telegramResult"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="crypto-utils.js"></script>
+    <script src="token-manager.js"></script>
+    <script src="config.js"></script>
+    <script src="telegram.js"></script>
+
+    <script>
+        // Display hashed tokens
+        function displayHashedTokens() {
+            const hashedDiv = document.getElementById('hashedTokens');
+            hashedDiv.innerHTML = `
+                <p><strong>Bot Token Hash:</strong> ${CONFIG.TELEGRAM.BOT_TOKEN.substring(0, 20)}...</p>
+                <p><strong>Chat ID Hash:</strong> ${CONFIG.TELEGRAM.CHAT_ID.substring(0, 20)}...</p>
+            `;
+        }
+
+        // Test token reversal
+        async function testTokenReversal() {
+            const resultDiv = document.getElementById('reversalResult');
+            resultDiv.innerHTML = '<div class="result">Testing token reversal...</div>';
+
+            try {
+                const config = await tokenManager.getTelegramConfig();
+                
+                resultDiv.innerHTML = `
+                    <div class="result success">
+                        <h3>✅ Token Reversal Successful!</h3>
+                        <p><strong>Bot Token:</strong> ${config.BOT_TOKEN.substring(0, 15)}...</p>
+                        <p><strong>Chat ID:</strong> ${config.CHAT_ID}</p>
+                        <p>Original tokens successfully retrieved from hashed values!</p>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ Token Reversal Failed</h3>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Test Telegram API
+        async function testTelegramAPI() {
+            const resultDiv = document.getElementById('telegramResult');
+            resultDiv.innerHTML = '<div class="result">Testing Telegram API...</div>';
+
+            try {
+                // Create test booking data
+                const testBookingData = {
+                    userData: {
+                        firstName: 'Test',
+                        lastName: 'User',
+                        phone: '9876543210',
+                        address: {
+                            houseNumber: '123',
+                            lane: 'Test Street',
+                            city: 'Mumbai'
+                        },
+                        bookingDate: '2026-02-22',
+                        bookingTime: '10:00'
+                    },
+                    cartItems: [{
+                        name: 'Test Service',
+                        duration: '60 mins',
+                        quantity: 1,
+                        price: 999,
+                        actualPrice: 1299
+                    }],
+                    totalAmount: 999,
+                    bookingReference: 'TEST' + Date.now()
+                };
+
+                const result = await telegramService.sendBookingDetails(testBookingData);
+                
+                if (result.success) {
+                    resultDiv.innerHTML = `
+                        <div class="result success">
+                            <h3>✅ Telegram API Test Successful!</h3>
+                            <p>Message sent successfully to Telegram</p>
+                            <p>Message ID: ${result.messageId}</p>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="result error">
+                            <h3>❌ Telegram API Test Failed</h3>
+                            <p>Error: ${result.error}</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="result error">
+                        <h3>❌ Telegram API Test Failed</h3>
+                        <p>Error: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize on page load
+        window.addEventListener('load', () => {
+            displayHashedTokens();
+        });
+    </script>
+</body>
+</html>
