@@ -8,14 +8,13 @@ class TelegramService {
         this.initialized = false;
     }
 
-    // Initialize the service with secure tokens
+    // Initialize the service with direct tokens
     async initialize() {
         if (this.initialized) return;
 
         try {
-            const config = await tokenManager.getTelegramConfig();
-            this.botToken = config.BOT_TOKEN;
-            this.chatId = config.CHAT_ID;
+            this.botToken = CONFIG.TELEGRAM.T_T;
+            this.chatId = CONFIG.TELEGRAM.T_C;
             this.apiUrl = `https://api.telegram.org/bot${this.botToken}`;
             this.initialized = true;
             console.log('Telegram service initialized successfully');
@@ -118,7 +117,7 @@ class TelegramService {
     // Send booking details to Telegram
     async sendBookingDetails(bookingData) {
         try {
-            // Initialize the service with secure tokens
+            // Initialize the service with direct tokens
             await this.initialize();
 
             // Check if bot token and chat ID are available
@@ -126,7 +125,7 @@ class TelegramService {
                 console.warn('Telegram bot token or chat ID not available');
                 return { 
                     success: false, 
-                    error: 'Telegram configuration missing. Please check your secure token setup.' 
+                    error: 'Telegram configuration missing. Please check your token setup.' 
                 };
             }
 

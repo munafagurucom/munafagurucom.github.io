@@ -17,13 +17,13 @@
     <h1>🔐 Token System Test</h1>
     
     <div class="test-section">
-        <h2>Hashed Tokens in Config:</h2>
+        <h2>Direct Tokens in Config:</h2>
         <div id="hashedTokens"></div>
     </div>
 
     <div class="test-section">
-        <h2>Token Reversal Test:</h2>
-        <button onclick="testTokenReversal()">Test Token Reversal</button>
+        <h2>Token Retrieval Test:</h2>
+        <button onclick="testTokenReversal()">Test Token Retrieval</button>
         <div id="reversalResult"></div>
     </div>
 
@@ -34,41 +34,37 @@
     </div>
 
     <!-- Scripts -->
-    <script src="crypto-utils.js"></script>
-    <script src="token-manager.js"></script>
     <script src="config.js"></script>
     <script src="telegram.js"></script>
 
     <script>
-        // Display hashed tokens
+        // Display direct tokens
         function displayHashedTokens() {
             const hashedDiv = document.getElementById('hashedTokens');
             hashedDiv.innerHTML = `
-                <p><strong>Bot Token Hash:</strong> ${CONFIG.TELEGRAM.BOT_TOKEN.substring(0, 20)}...</p>
-                <p><strong>Chat ID Hash:</strong> ${CONFIG.TELEGRAM.CHAT_ID.substring(0, 20)}...</p>
+                <p><strong>Bot Token:</strong> ${CONFIG.TELEGRAM.T_T.substring(0, 20)}...</p>
+                <p><strong>Chat ID:</strong> ${CONFIG.TELEGRAM.T_C}</p>
             `;
         }
 
-        // Test token reversal
+        // Test token retrieval
         async function testTokenReversal() {
             const resultDiv = document.getElementById('reversalResult');
-            resultDiv.innerHTML = '<div class="result">Testing token reversal...</div>';
+            resultDiv.innerHTML = '<div class="result">Testing token retrieval...</div>';
 
             try {
-                const config = await tokenManager.getTelegramConfig();
-                
                 resultDiv.innerHTML = `
                     <div class="result success">
-                        <h3>✅ Token Reversal Successful!</h3>
-                        <p><strong>Bot Token:</strong> ${config.BOT_TOKEN.substring(0, 15)}...</p>
-                        <p><strong>Chat ID:</strong> ${config.CHAT_ID}</p>
-                        <p>Original tokens successfully retrieved from hashed values!</p>
+                        <h3>✅ Token Retrieval Successful!</h3>
+                        <p><strong>Bot Token:</strong> ${CONFIG.TELEGRAM.T_T.substring(0, 15)}...</p>
+                        <p><strong>Chat ID:</strong> ${CONFIG.TELEGRAM.T_C}</p>
+                        <p>Tokens successfully retrieved from config!</p>
                     </div>
                 `;
             } catch (error) {
                 resultDiv.innerHTML = `
                     <div class="result error">
-                        <h3>❌ Token Reversal Failed</h3>
+                        <h3>❌ Token Retrieval Failed</h3>
                         <p>Error: ${error.message}</p>
                     </div>
                 `;

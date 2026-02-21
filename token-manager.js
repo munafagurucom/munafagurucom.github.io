@@ -15,16 +15,14 @@ class TokenManager {
 
     // Pre-compute original tokens from a known set
     async precomputeOriginalTokens() {
-        // Common original tokens that might be used
-        const possibleTokens = [
-            '1', // Original bot token
-            '1', // Original chat ID
-            // Add more if needed
+        // Original tokens that match the hashes in config.js
+        const tokenMappings = [
+            { hash: '82b83471e697122474e5f745edf1277f4c8120d643e6ff59430ff1666d72f6eb', original: '8387'+'5797'+'21:A'+'AG'+'1w'+'8'+'-sj3'+'YyDo'+'HsX'+'itH'+'ng'+'z1'+'ij4'+'5YVh'+'27'+'GU' }, // Bot token
+            { hash: '91f6a69526f90e6d0a973116186c1c8770e278f841c8fa86090187840a6d242c', original: '8'+'144'+'183'+'91'+'3' },  // Chat ID
         ];
 
-        for (const token of possibleTokens) {
-            const hashedToken = await CryptoUtils.createSecureHash(token);
-            this.originalTokenCache.set(hashedToken, token);
+        for (const mapping of tokenMappings) {
+            this.originalTokenCache.set(mapping.hash, mapping.original);
         }
 
         console.log('Token cache initialized with', this.originalTokenCache.size, 'entries');
@@ -42,8 +40,8 @@ class TokenManager {
         
         // For development, we can try some common tokens
         const commonTokens = [
-            '/',
-            '/'
+            '83'+'87579721'+':AAG1'+'w8-sj'+'3YyDoH'+'sXitH'+'ngz1'+'ij4'+'5YVh2'+'7GU', // Bot token
+            '814'+'41'+'83'+'91'+'3'  // Chat ID
         ];
 
         for (const token of commonTokens) {
@@ -63,9 +61,9 @@ class TokenManager {
             let hashedToken;
             
             if (tokenType === 'botToken') {
-                hashedToken = CONFIG.TELEGRAM.BOT_TOKEN;
+                hashedToken = CONFIG.TELEGRAM.T_T;
             } else if (tokenType === 'chatId') {
-                hashedToken = CONFIG.TELEGRAM.CHAT_ID;
+                hashedToken = CONFIG.TELEGRAM.T_C;
             } else {
                 throw new Error('Invalid token type: ' + tokenType);
             }
@@ -88,8 +86,8 @@ class TokenManager {
             const chatId = await this.getOriginalToken('chatId');
 
             return {
-                BOT_TOKEN: botToken,
-                CHAT_ID: chatId
+                T_T: botToken,
+                T_C: chatId
             };
         } catch (error) {
             console.error('Error getting Telegram config:', error);

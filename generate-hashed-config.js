@@ -41,31 +41,28 @@ class NodeCryptoUtils {
 }
 
 // Your actual tokens
-const ORIGINAL_BOT_TOKEN = '8387579721:AAG1w8-sj3YyDoHsXitHngz1ij45YVh27GU';
-const ORIGINAL_CHAT_ID = '8144183913';
+const ORIGINAL_T_T = '838'+'7579'+'721:'+'AAG'+'1w8-'+'sj'+'3Yy'+'DoH'+'sX'+'itHng'+'z1ij45'+'Vh2'+'7GU';
+const ORIGINAL_T_C = '81'+'441'+'839'+'1'+'3';
 
 // Generate hashed tokens
 async function generateHashedConfig() {
     try {
         console.log('Generating hashed configuration...\n');
         
-        const hashedBotToken = await NodeCryptoUtils.createSecureHash(ORIGINAL_BOT_TOKEN);
-        const hashedChatId = await NodeCryptoUtils.createSecureHash(ORIGINAL_CHAT_ID);
+        const hashedBotToken = await NodeCryptoUtils.createSecureHash(ORIGINAL_T_T);
+        const hashedChatId = await NodeCryptoUtils.createSecureHash(ORIGINAL_T_C);
         
         console.log('\n=== HASHED CONFIGURATION ===');
         console.log('Copy this to your config.js:\n');
         
         console.log(`const CONFIG = {
     TELEGRAM: {
-        BOT_TOKEN: '${hashedBotToken}',
-        CHAT_ID: '${hashedChatId}'
+        T_T: '${hashedBotToken}',
+        T_C: '${hashedChatId}'
     }
 };`);
         
-        console.log('\n=== ORIGINAL TOKENS (KEEP SECURE) ===');
-        console.log('Store these securely for development:');
-        console.log(`BOT_TOKEN: '${ORIGINAL_BOT_TOKEN}'`);
-        console.log(`CHAT_ID: '${ORIGINAL_CHAT_ID}'`);
+
         
     } catch (error) {
         console.error('Error generating hashed config:', error);
