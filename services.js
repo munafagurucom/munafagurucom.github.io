@@ -35,7 +35,7 @@ const services = [
     {
         serviceId: "4",
         name: "Combo : Facial(VLCC Fruit) + Waxing(Honey) Full Leg + Full Arm + Underarm",
-        offerPrice: 1399,
+        offerPrice: 1499,
         actualPrice: 2598,
         tags: ["Combo"],
         rating: 4.75,
@@ -45,7 +45,7 @@ const services = [
     {
         serviceId: "5",
         name: "Combo : Facial(VLCC Fruit) + Waxing(Honey) Full Leg + Full Arm + Detan Face + Detan Neck + Threading Upper Lip",
-        offerPrice: 1399,
+        offerPrice: 1499,
         actualPrice: 2598,
         tags: ["Combo"],
         rating: 4.9,
@@ -55,7 +55,7 @@ const services = [
     {
         serviceId: "6",
         name: "Combo : Facial(VLCC Fruit) + Waxing(Honey) Full Leg + Full Arm + Threading Upper Lip + Threading Eye Brows + Massage Back&Shoulder 10 Min",
-        offerPrice: 1399,
+        offerPrice: 1499,
         actualPrice: 2598,
         tags: ["Combo"],
         rating: 4.75,
@@ -165,7 +165,7 @@ const services = [
     {
         serviceId: "17",
         name: "Facials : O3+ Anti Aging",
-        offerPrice: 1399,
+        offerPrice: 1499,
         actualPrice: 2798,
         tags: ["Facials"],
         rating: 4.7,
@@ -175,7 +175,7 @@ const services = [
     {
         serviceId: "18",
         name: "Facials : O3+ Shine and Glow",
-        offerPrice: 1399,
+        offerPrice: 1499,
         actualPrice: 2798,
         tags: ["Facials"],
         rating: 4.8,
@@ -185,7 +185,7 @@ const services = [
     {
         serviceId: "19",
         name: "Facials : O3+ Vitamin C",
-        offerPrice: 1399,
+        offerPrice: 1499,
         actualPrice: 2798,
         tags: ["Facials"],
         rating: 4.85,
@@ -195,7 +195,7 @@ const services = [
     {
         serviceId: "20",
         name: "Facials : O3+ D-Tan Facial",
-        offerPrice: 1399,
+        offerPrice: 1499,
         actualPrice: 2798,
         tags: ["Facials"],
         rating: 4.9,
