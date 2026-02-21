@@ -247,13 +247,14 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', () => {
+        checkoutBtn.addEventListener('click', (e) => {
             const cartSummary = cartManager.getCartSummary();
-            if (cartSummary.canCheckout) {
-                window.location.href = 'checkout.html';
-            } else {
+            if (!cartSummary.canCheckout) {
+                e.preventDefault();
                 Utils.showToast(`Minimum checkout amount is ₹${cartSummary.minCheckoutAmount}`, 'warning');
+                return;
             }
+            window.location.href = 'checkout.html';
         });
     }
 });

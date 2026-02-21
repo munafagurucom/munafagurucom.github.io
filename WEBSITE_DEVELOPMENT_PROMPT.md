@@ -52,9 +52,9 @@ const services = [
 - Left side: Total amount of services in cart
 - Right side: "Proceed to Checkout" button
 - **Button Logic**:
-  - Disabled when total < ₹999
-  - Shows "Minimum checkout for cart is Rs.999" when disabled
-  - Turns green and enabled when total ≥ ₹999
+  - Disabled when total < ₹1499
+  - Shows "Minimum checkout for cart is Rs.1499" when disabled
+  - Turns green and enabled when total ≥ ₹1499
 
 ### 5. Checkout Page
 - Display list of selected services

@@ -26,7 +26,7 @@ Successfully created a complete, production-ready website for "Pedi And Mani Hom
 
 ### 4. **Floating Cart Summary** ✅
 - Fixed bottom cart with total amount
-- Checkout button with minimum ₹999 validation
+- Checkout button with minimum ₹1499 validation
 - Dynamic button states and messages
 - Responsive design for mobile
 

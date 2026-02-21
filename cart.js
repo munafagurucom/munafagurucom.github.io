@@ -5,7 +5,7 @@ class CartManager {
         this.storageManager = storageManager;
         this.serviceManager = serviceManager;
         this.listeners = [];
-        this.MIN_CHECKOUT_AMOUNT = 999;
+        this.MIN_CHECKOUT_AMOUNT = 1499;
     }
 
     // Add event listener for cart changes
